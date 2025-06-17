@@ -44,7 +44,7 @@
     setContext({
       backend: factory()
         .onHostname("https://tu-moidcs.staging.stg11.panther.intgdc.com")
-        .withAuthentication(new ContextDeferredAuthProvider(createRedirectToTigerAuthenticationWithParams({ externalProviderId: "<provider-id>" }))),
+        .withAuthentication(new ContextDeferredAuthProvider(createRedirectToTigerAuthenticationWithParams({ externalProviderId: "auth0Providers" }))),
       workspaceId: "demo_ecommerce",
     });
   </script>
