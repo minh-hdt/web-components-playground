@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="
+  script-src 'self' 'unsafe-inline' 'unsafe-eval' https://staging.dev-latest.stg11.panther.intgdc.com/;
+  img-src 'self' data: blob: https://staging.dev-latest.stg11.panther.intgdc.com/;
+  style-src 'self' 'unsafe-inline' https://staging.dev-latest.stg11.panther.intgdc.com/;
+  font-src 'self' data: https://staging.dev-latest.stg11.panther.intgdc.com/;
+">
+  <title>Embedded KD</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 0;
+      margin: 0;
+    }
+
+    details summary {
+      cursor: pointer;
+    }
+
+    details summary:hover {
+      text-decoration: underline;
+    }
+
+    .messages {
+      border: 1px solid #dedede;
+      height: 200px;
+      overflow: scroll;
+    }
+  </style>
+  <script type="module">
+    // Import the library along with `setContext` method
+    import { setContext } from "https://staging.dev-latest.stg11.panther.intgdc.com/components/workspace-id.js";
+    // Import GoodData.CN backend for GoodData.CN and GoodData Cloud
+    import factory, {
+      ContextDeferredAuthProvider,
+      createRedirectToTigerAuthenticationWithParams,
+    } from "https://staging.dev-latest.stg11.panther.intgdc.com/components/tigerBackend.js";
+
+    // Set up GoodData.CN backend and default workspace id
+    setContext({
+      backend: factory()
+        .onHostname("https://staging.dev-latest.stg11.panther.intgdc.com")
+        .withAuthentication(new ContextDeferredAuthProvider(createRedirectToTigerAuthenticationWithParams({ externalProviderId: "auth0Providers" }))),
+      workspaceId: "278d838e93de4e34919d6509bb29286c",
+    });
+  </script>
+
+</head>
+
+<body>
+  <gd-dashboard dashboard="2c269aba-2a5a-4d54-8bdb-bbf037645f0f" workspace="278d838e93de4e34919d6509bb29286c" readonly></gd-dashboard>
+</body>
+
+</html>
